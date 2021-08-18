@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebAPI.Data;
+using WebAPI.Services;
 
 namespace WebAPI
 {
@@ -33,6 +34,7 @@ namespace WebAPI
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")
                     ));
+            services.AddTransient<BookService>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAPI", Version = "v1" });
