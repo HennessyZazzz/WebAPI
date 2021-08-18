@@ -27,22 +27,22 @@ namespace WebAPI.Controllers
             return Ok(allBooks);
         }
 
-        [HttpPost("create-book")]
-        public IActionResult CreateBook(Book book)
+        [HttpPost("add-book")]
+        public IActionResult AddBook([FromBody] Book book)
         {
             _bookService.AddBook(book);
             return Ok();
         }
 
-        [HttpPut]
-        public IActionResult EditBook(int id, Book book)
+        [HttpPut("update-book/{id}")]
+        public IActionResult UpdateBookById(int id, [FromBody] Book book)
         {
-            _bookService.EditBook(id, book);
-            return Ok();
+            var updatedBook = _bookService.UpdateBookById(id, book);
+            return Ok(updatedBook);
         }
 
-        [HttpDelete]
-        public IActionResult DeketeBook(int id)
+        [HttpDelete("delete-book/{id}")]
+        public IActionResult DeleteBook(int id)
         {
             _bookService.DeleteBook(id);
             return Ok();

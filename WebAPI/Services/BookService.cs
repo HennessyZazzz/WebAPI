@@ -23,35 +23,34 @@ namespace WebAPI.Services
             _context.SaveChanges();
         }
 
-        public void EditBook(int id, Book book)
+        public Book UpdateBookById(int bookId, Book book)
         {
-            var findBook = _context.Book.Find(id);
-            if (findBook != null)
-            {
-                if (book != null)
-                {
-                    findBook.Title = book.Title;
-                    findBook.Description = book.Description;
-                    findBook.IsRead = book.IsRead;
-                    findBook.DateRead = book.DateRead;
-                    findBook.Rate = book.Rate;
-                    findBook.Genre = book.Genre;
-                    findBook.Author = book.Author;
-                    findBook.ImageUrl = book.ImageUrl;
-                    findBook.DataAdded = book.DataAdded;
+            var _book = _context.Book.FirstOrDefault(n => n.Id == bookId);
 
-                    _context.Book.Update(findBook);
-                    _context.SaveChanges();
-                }
+            if (_book != null)
+            {
+                _book.Title = book.Title;
+                _book.Description = book.Description;
+                _book.IsRead = book.IsRead;
+                _book.DateRead = book.DateRead;
+                _book.Author = book.Author;
+                _book.Rate = book.Rate;
+                _book.Genre = book.Genre;
+                _book.ImageUrl = book.ImageUrl;
+
+                _context.SaveChanges();
             }
+
+            return _book;
         }
 
-        public void DeleteBook(int id)
+        public void DeleteBook(int bookId)
         {
-            var findBook = _context.Book.Find(id);
-            if (findBook != null)
+            var _book = _context.Book.FirstOrDefault(n => n.Id == bookId);
+
+            if (_book != null)
             {
-                _context.Book.Remove(findBook);
+                _context.Book.Remove(_book);
                 _context.SaveChanges();
             }
         }
