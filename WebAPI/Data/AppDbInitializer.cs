@@ -22,7 +22,6 @@ namespace WebAPI.Data
                         {
                             Title = "Beginning C++20",
                             Description = "From Novice to Professional",
-                            Author = "Horton, Ivor, Van Weert, Peter",
                             IsRead = true,
                             Rate = 4,
                             DateRead = DateTime.Now.AddDays(-24),
@@ -35,7 +34,6 @@ namespace WebAPI.Data
                         {
                             Title = "Beginning T-SQL",
                             Description = "A Step-by-Step Approach",
-                            Author = "Kellenberger, Kathi, Everest, Lee",
                             IsRead = false,
                             Genre = "Programing",
                             ImageUrl = "https://media.springernature.com/w153/springer-static/cover/book/9781484266069.jpg",

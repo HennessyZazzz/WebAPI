@@ -10,7 +10,7 @@ using WebAPI.Data;
 namespace WebAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210816142414_InitBook")]
+    [Migration("20210818132759_InitBook")]
     partial class InitBook
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,10 +34,13 @@ namespace WebAPI.Migrations
                     b.Property<DateTime>("DataAdded")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("DateRead")
+                    b.Property<DateTime?>("DateRead")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Genre")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImageUrl")
@@ -46,7 +49,7 @@ namespace WebAPI.Migrations
                     b.Property<bool>("IsRead")
                         .HasColumnType("bit");
 
-                    b.Property<int>("Rate")
+                    b.Property<int?>("Rate")
                         .HasColumnType("int");
 
                     b.Property<string>("Title")

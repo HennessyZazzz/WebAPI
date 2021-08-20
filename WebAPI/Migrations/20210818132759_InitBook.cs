@@ -16,8 +16,9 @@ namespace WebAPI.Migrations
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsRead = table.Column<bool>(type: "bit", nullable: false),
-                    DateRead = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Rate = table.Column<int>(type: "int", nullable: false),
+                    DateRead = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Rate = table.Column<int>(type: "int", nullable: true),
+                    Genre = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Author = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DataAdded = table.Column<DateTime>(type: "datetime2", nullable: false)
