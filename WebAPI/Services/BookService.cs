@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebAPI.Data;
 using WebAPI.Models;
+using WebAPI.Models.ViewModels;
 
 namespace WebAPI.Services
 {
@@ -15,6 +16,36 @@ namespace WebAPI.Services
         {
             _context = context;
         }
+
+        public void AddBookWithAuthors(BookVM book)
+        {
+            var _book = new Book()
+            {
+                Title = book.Title,
+                Description = book.Description,
+                IsRead = book.IsRead,
+                DateRead = book.DateRead,
+                Rate = book.Rate,
+                Genre = book.Genre,
+                ImageUrl = book.ImageUrl,
+                DataAdded = book.DataAdded,
+                PublisherId = book.PublisherId
+            };
+            _context.Book.Add(_book);
+            _context.SaveChanges();
+
+            foreach (var id in book.AuthorId)
+            {
+                var _book_author = new Book_Author
+                {
+                    BookId = _book.Id,
+                    AuthorId = id
+                };
+                _context.Book_Author.Add(_book_author);
+                _context.SaveChanges();
+            }
+        }
+
         public List<Book> GetAllBooks() => _context.Book.ToList();
 
         public void AddBook(Book book)

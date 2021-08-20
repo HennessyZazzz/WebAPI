@@ -35,6 +35,8 @@ namespace WebAPI
                     Configuration.GetConnectionString("DefaultConnection")
                     ));
             services.AddTransient<BookService>();
+            services.AddTransient<PublishersService>();
+            services.AddTransient<AuthorService>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAPI", Version = "v1" });

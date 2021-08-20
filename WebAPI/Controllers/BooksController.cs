@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebAPI.Models;
+using WebAPI.Models.ViewModels;
 using WebAPI.Services;
 
 namespace WebAPI.Controllers
@@ -18,6 +19,13 @@ namespace WebAPI.Controllers
         public BooksController(BookService booksSerice)
         {
             _bookService = booksSerice;
+        }
+
+        [HttpPost("add-book-with-autors")]
+        public IActionResult AddBook([FromBody] BookVM book)
+        {
+            _bookService.AddBookWithAuthors(book);
+            return Ok();
         }
 
         [HttpGet("get-all-books")]
